@@ -1,0 +1,125 @@
+drop database LibraryMangement;
+create database LibraryMangement default character set utf8 collate utf8_general_ci;
+use  LibraryMangement;
+set global time_zone='+8:00';
+create table manager(
+id bigint auto_increment primary key,
+no varchar(10)not null unique,
+name varchar(20) not null
+);
+create table menu(
+id bigint auto_increment primary key,
+description varchar(255),
+url varchar(255)
+);
+create table User(
+  id bigint auto_increment primary key,
+  username varchar(255) unique not null,
+  password varchar(255) not null
+);
+create table role(
+id bigint auto_increment primary key,
+description varchar(255)
+);
+create table ur(
+id bigint auto_increment primary key,
+user_id bigint not null,
+role_id bigint not null,
+foreign key (user_id) references User(id),
+foreign key (role_id) references role(id)
+);
+create table rm(
+id bigint auto_increment primary key,
+menu_id bigint not null,
+role_id bigint not null,
+foreign key (role_id) references role(id),
+foreign key (menu_id) references menu(id)
+);
+create table booktype(
+    id bigint auto_increment primary key,
+    no varchar(10)not null unique,
+    typeName varchar(255) not null
+);
+create table readertype(
+    id bigint auto_increment primary key,
+    no varchar(10)not null unique,
+    typeName varchar(255) not null,
+    maxBorrowNum bigint check(maxBorrowNum >=0),
+    limitDate bigint check(limitDate >=0)
+);
+create table Reader
+(id bigint auto_increment primary key,
+no char(8) unique,
+name char(10) not null,
+age smallint check(age>0),
+phone char(11),
+date date,
+type_id bigint not null,
+borrowedNum bigint not null,
+foreign key(type_id) references readertype(id)
+);
+create table book(
+id bigint auto_increment primary key,
+no varchar(8)not null,
+ISBN varchar(30) not null,
+bookName varchar(30)not null,
+author varchar(30)not null,
+publish varchar(30)not null,
+publishdate date,
+unitprice bigint not null,
+bookStatus bigint not null,
+type_id bigint not null,
+foreign key(type_id) references booktype(id)
+);
+CREATE TABLE BorrowBook(
+    id bigint auto_increment primary key,
+    no varchar(10) not null,
+    borrowDate Date,
+    reader_id bigint not null,
+    book_id bigint not null,
+    manager_id bigint not null,
+    foreign key(reader_id) references Reader(id),
+    foreign key(book_id) references Book(id),
+    foreign key(manager_id) references Manager(id)
+);
+CREATE TABLE ReturnBOOK(
+    id bigint auto_increment primary key,
+    no varchar(10) not null,
+    returnDate Date,
+    reader_id bigint not null,
+    book_id bigint not null,
+    manager_id bigint not null,
+    borrowBook_id bigint not null,
+    foreign key(reader_id) references Reader(id),
+    foreign key(book_id) references Book(id),
+    foreign key(manager_id) references Manager(id),
+    foreign key(borrowBook_id) references BorrowBook(id)
+);
+CREATE TABLE Fine(
+    id bigint auto_increment primary key,
+    no varchar(10),
+    fineAmount bigint not null,
+    description varchar(50) not null,
+    reader_id bigint not null,
+    book_id bigint not null,
+    foreign key(reader_id) references Reader(id),
+    foreign key(book_id) references Book(id)
+);
+show tables;
+insert into manager values(1,'01','李四');
+INSERT INTO booktype VALUES (1,'01','计算机'),(2,'02','文学'),(3,'03','小说');
+INSERT INTO readertype VALUES (1,'01','学生',3,30),(2,'02','教师',6,60);
+insert into book(id,no,ISBN,bookName,author,publish,unitprice,type_id) values(1,'01','123456','三体','刘慈欣','山东出版社',30,1);
+insert into reader(id,no,name,age,phone,type_id,borrowedNum) values(1,'01','王五',18,'15688798754',1,0);
+insert into borrowbook(id,no,reader_id,book_id,manager_id) values(1,'01',1,1,1);
+insert into returnbook(id,no,reader_id,book_id,manager_id,borrowBook_id)  values(1,'01',1,1,1,1);
+insert into fine values(1,'01',5,'超时5天',1,1);
+select * from bookType;
+select * from readerType;
+select * from book;
+select * from reader;
+select * from borrowbook;
+select * from returnbook;
+select * from fine;
+select * from user;
+select * from manager;

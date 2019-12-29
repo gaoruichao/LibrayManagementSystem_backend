@@ -1,0 +1,28 @@
+delimiter //
+drop procedure if exists sp_addReturnBook// #执行双斜线前面的语句
+create procedure sp_addReturnBook(
+    in no varchar(8),
+        returnDate Date,
+        book_id bigint,
+        reader_id bigint,
+        borrowBook_id bigint,
+        manager_id bigint)
+begin
+      Declare diff int;
+      Declare limitDate int;
+      Declare borrowDate_sl Date;
+      Declare overDay int;
+      Declare fineAmount int;
+      set fineAmount=0;
+
+      Select borrowDate into borrowDate_sl from borrowBook where id = borrowBook_id;
+      set diff = datediff(returnDate,borrowDate_sl);
+      if(diff>limitDate) then
+        set overDay = diff - limitDate;
+        set fineAmount = overDay * 1;
+        INSERT INTO ReturnBook(no,returnDate,book_id,reader_id,borrowBook_id,actor_id) values(no,returnDate,book_id,reader_id,borrowBook_id,actor_id);
+        INSERT INTO fine (no,fineAmount,description,reader_id,book_id) values(no,fineAmount,"超过了"+overDay+"天",reader_id,book_id);
+      else
+        INSERT INTO ReturnBook(no,returnDate,book_id,reader_id,borrowBook_id,actor_id) values(no,returnDate,book_id,reader_id,borrowBook_id,actor_id)
+end//
+delimiter ;

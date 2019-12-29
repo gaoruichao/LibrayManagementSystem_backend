@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "ed83ae2d-eed4-4cbb-9192-899eea8f4c34",
+		"name": "BorrowBookCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/borrowBook.ctl",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"李三\",\r\n        \"no\": \"02\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/borrowBook.ctl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"borrowBook.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/returnBook.ctl",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"actor\": {\r\n            \"id\": 3,\r\n            \"name\": \"李三\",\r\n            \"no\": \"02\"\r\n        },\r\n        \"book\": {\r\n            \"author\": \"刘慈欣\",\r\n            \"bookName\": \"三体\",\r\n            \"bookStatus\": 0,\r\n            \"bookType\": {\r\n                \"id\": 1,\r\n                \"typeName\": \"计算机\"\r\n            },\r\n            \"id\": 1,\r\n            \"isbn\": \"123456\",\r\n            \"no\": \"01\",\r\n            \"publish\": \"山东出版社\",\r\n            \"unitPrice\": 30\r\n        },\r\n        \"no\": \"02\",\r\n        \"reader\": {\r\n            \"age\": 18,\r\n            \"borrowedNum\": 0,\r\n            \"id\": 1,\r\n            \"name\": \"王三\",\r\n            \"no\": \"01\",\r\n            \"phone\": \"15688798754\",\r\n            \"readerType\": {\r\n                \"id\": 1,\r\n                \"limit\": 30,\r\n                \"maxBorrowNum\": 3,\r\n                \"typeName\": \"学生\"\r\n            }\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/borrowBook.ctl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"borrowBook.ctl"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

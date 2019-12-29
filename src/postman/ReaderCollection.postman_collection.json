@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "0096651c-e7da-414f-996c-15a7b969a691",
+		"name": "ReaderCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/reader.ctl",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 3,\r\n        \"limitDate\": 41,\r\n        \"maxBorrowNum\": 3,\r\n        \"typeName\": \"工人\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reader.ctl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reader.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/reader.ctl",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"age\": 18,\r\n        \"borrowedNum\": 0,\r\n        \"id\": 1,\r\n        \"name\": \"王san\",\r\n        \"no\": \"01\",\r\n        \"phone\": \"15688798754\",\r\n        \"readerType\": {\r\n            \"id\": 1,\r\n            \"limit\": 30,\r\n            \"maxBorrowNum\": 3,\r\n            \"typeName\": \"学生\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reader.ctl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reader.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/reader.ctl",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"age\": 18,\r\n        \"borrowedNum\": 0,\r\n        \"name\": \"王五\",\r\n        \"no\": \"02\",\r\n        \"phone\": \"15688797854\",\r\n        \"readerType\": {\r\n            \"id\": 1,\r\n            \"limit\": 30,\r\n            \"maxBorrowNum\": 3,\r\n            \"typeName\": \"学生\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reader.ctl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reader.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/reader.ctl",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"age\": 18,\r\n        \"borrowedNum\": 0,\r\n        \"id\": 1,\r\n        \"name\": \"王三\",\r\n        \"no\": \"01\",\r\n        \"phone\": \"15688798754\",\r\n        \"readerType\": {\r\n            \"id\": 1,\r\n            \"limit\": 30,\r\n            \"maxBorrowNum\": 3,\r\n            \"typeName\": \"学生\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reader.ctl?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reader.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/reader.ctl",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"age\": 18,\r\n        \"borrowedNum\": 0,\r\n        \"id\": 1,\r\n        \"name\": \"王三\",\r\n        \"no\": \"01\",\r\n        \"phone\": \"15688798754\",\r\n        \"readerType\": {\r\n            \"id\": 1,\r\n            \"limit\": 30,\r\n            \"maxBorrowNum\": 3,\r\n            \"typeName\": \"学生\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reader.ctl?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reader.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
